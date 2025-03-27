@@ -26,5 +26,6 @@ DirNode* findDir(DirNode* current, const char* name);
 void deleteFile(DirNode* current, const char* fileName);
 void deleteDir(DirNode* parent, const char* dirName);
 void renameItem(DirNode* current, const char* oldName, const char* newName);
+void moveFile(DirNode* source, const char* fileName, DirNode* destination);
 
 #endif

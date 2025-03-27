@@ -25,7 +25,6 @@ DirNode* createDir(DirNode* parent, const char* name) {
     return newDir;
 }
 
-
 void createFile(DirNode* parent, const char* fileName) {
     FileNode* newFile = (FileNode*)malloc(sizeof(FileNode));
     strcpy(newFile->fileName, fileName);
@@ -173,3 +172,26 @@ void renameItem(DirNode* current, const char* oldName, const char* newName) {
     printf("Item not found.\n");
 }
 
+void moveFile(DirNode* source, const char* fileName, DirNode* destination) {
+    FileNode *file = source->fileList, *prev = NULL;
+
+    while (file && strcmp(file->fileName, fileName)) {
+        prev = file;
+        file = file->nextFile;
+    }
+    if (!file) { printf("File not found.\n"); return; }
+
+    if (!prev) source->fileList = file->nextFile;
+    else prev->nextFile = file->nextFile;
+
+    file->nextFile = NULL;
+
+    if (!destination->fileList) destination->fileList = file;
+    else {
+        FileNode* temp = destination->fileList;
+        while (temp->nextFile) temp = temp->nextFile;
+        temp->nextFile = file;
+    }
+
+    printf("File moved.\n");
+}

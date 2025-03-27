@@ -12,6 +12,8 @@ void printMenu() {
     printf("5. Delete File\n");
     printf("6. Delete Directory\n");
     printf("7. Rename Item\n");
+    printf("8. Move File\n");
+    printf("9. Exit\n");
     printf("---------------------------\n");
 }
 
@@ -61,6 +63,7 @@ int main() {
                 scanf("%s", dirName);
                 search(rootDir, dirName, "");
                 break;
+
             case 5:
                 printf("Directory containing file: ");
                 scanf("%s", parentDirName);
@@ -72,6 +75,7 @@ int main() {
                 scanf("%s", fileName);
                 deleteFile(delFileDir, fileName);
                 break;
+
             case 6:
                 printf("Parent directory: ");
                 scanf("%s", parentDirName);
@@ -97,6 +101,29 @@ int main() {
                 scanf("%s", newName);
                 renameItem(renameDir, dirName, newName);
                 break;
+
+            case 8:
+                printf("Source directory: ");
+                scanf("%s", parentDirName);
+                DirNode* srcDir = findDir(rootDir, parentDirName);
+                if (!srcDir) {
+                    printf("Source not found!\n"); break;
+                }
+                printf("File to move: ");
+                scanf("%s", fileName);
+                printf("Destination directory: ");
+                scanf("%s", targetDir);
+                DirNode* destDir = findDir(rootDir, targetDir);
+                if (!destDir) {
+                    printf("Destination not found!\n"); break;
+                }
+                moveFile(srcDir, fileName, destDir);
+                break;
+
+            case 9:
+                freeMemory(rootDir);
+                printf("Exiting. Memory cleaned up!\n");
+                exit(0);
 
             default:
                 printf("Invalid choice. Try again.\n");
