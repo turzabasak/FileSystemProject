@@ -84,3 +84,52 @@ void search(DirNode* current, const char* searchName, char path[]) {
     }
 }
 
+void freeMemory(DirNode* current) {
+    if (!current) return;
+
+    FileNode* file = current->fileList;
+    while (file) {
+        FileNode* tempFile = file;
+        file = file->nextFile;
+        free(tempFile);
+    }
+
+    DirNode* subdir = current->childDirs;
+    while (subdir) {
+        DirNode* tempDir = subdir;
+        subdir = subdir->nextDir;
+        freeMemory(tempDir);
+    }
+
+    free(current);
+}
+
+DirNode* findDir(DirNode* current, const char* name) {
+    if (!current) return NULL;
+    if (strcmp(current->dirName, name) == 0) return current;
+
+    DirNode* subdir = current->childDirs;
+    while (subdir) {
+        DirNode* found = findDir(subdir, name);
+        if (found) return found;
+        subdir = subdir->nextDir;
+    }
+    return NULL;
+}
+
+void deleteFile(DirNode* current, const char* fileName) {
+    FileNode *file = current->fileList, *prev = NULL;
+
+    while (file && strcmp(file->fileName, fileName)) {
+        prev = file;
+        file = file->nextFile;
+    }
+    if (!file) { printf("File not found.\n"); return; }
+
+    if (!prev) current->fileList = file->nextFile;
+    else prev->nextFile = file->nextFile;
+
+    free(file);
+    printf("File deleted.\n");
+}
+

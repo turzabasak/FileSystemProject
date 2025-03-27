@@ -6,6 +6,10 @@
 void printMenu() {
     printf("\n--- Student File System ---\n");
     printf("1. Create Directory\n");
+    printf("2. Create File\n");
+    printf("3. List Directories and Files\n");
+    printf("4. Search\n");
+    printf("5. Delete File\n");
 }
 
 int main() {
@@ -54,6 +58,18 @@ int main() {
                 scanf("%s", dirName);
                 search(rootDir, dirName, "");
                 break;
+            case 5:
+                printf("Directory containing file: ");
+                scanf("%s", parentDirName);
+                DirNode* delFileDir = findDir(rootDir, parentDirName);
+                if (!delFileDir) {
+                    printf("Directory not found!\n"); break;
+                }
+                printf("File name to delete: ");
+                scanf("%s", fileName);
+                deleteFile(delFileDir, fileName);
+                break;
+                
             default:
                 printf("Invalid choice. Try again.\n");
         }

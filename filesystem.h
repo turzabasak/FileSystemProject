@@ -21,5 +21,8 @@ DirNode* createDir(DirNode* parent, const char* name);
 void createFile(DirNode* parent, const char* fileName);
 void listAll(DirNode* current, int level);
 void search(DirNode* current, const char* searchName, char path[]);
+void freeMemory(DirNode* current);
+DirNode* findDir(DirNode* current, const char* name);
+void deleteFile(DirNode* current, const char* fileName);
 
 #endif
