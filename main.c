@@ -31,6 +31,29 @@ int main() {
                 createDir(parentDir, dirName);
                 printf("Directory created successfully.\n");
                 break;
+
+            case 2:
+                printf("Directory to create file in: ");
+                scanf("%s", parentDirName);
+                DirNode* target = findDir(rootDir, parentDirName);
+                if (!target) {
+                    printf("Directory not found!\n"); break;
+                }
+                printf("File name: ");
+                scanf("%s", fileName);
+                createFile(target, fileName);
+                printf("File created successfully.\n");
+                break;
+
+            case 3:
+                listAll(rootDir, 0);
+                break;
+
+            case 4:
+                printf("Name to search: ");
+                scanf("%s", dirName);
+                search(rootDir, dirName, "");
+                break;
             default:
                 printf("Invalid choice. Try again.\n");
         }
