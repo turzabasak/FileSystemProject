@@ -10,6 +10,9 @@ void printMenu() {
     printf("3. List Directories and Files\n");
     printf("4. Search\n");
     printf("5. Delete File\n");
+    printf("6. Delete Directory\n");
+    printf("7. Rename Item\n");
+    printf("---------------------------\n");
 }
 
 int main() {
@@ -69,7 +72,32 @@ int main() {
                 scanf("%s", fileName);
                 deleteFile(delFileDir, fileName);
                 break;
-                
+            case 6:
+                printf("Parent directory: ");
+                scanf("%s", parentDirName);
+                DirNode* delDirParent = findDir(rootDir, parentDirName);
+                if (!delDirParent) {
+                    printf("Directory not found!\n"); break;
+                }
+                printf("Directory to delete: ");
+                scanf("%s", dirName);
+                deleteDir(delDirParent, dirName);
+                break;
+
+            case 7:
+                printf("Directory containing item: ");
+                scanf("%s", parentDirName);
+                DirNode* renameDir = findDir(rootDir, parentDirName);
+                if (!renameDir) {
+                    printf("Directory not found!\n"); break;
+                }
+                printf("Old name: ");
+                scanf("%s", dirName);
+                printf("New name: ");
+                scanf("%s", newName);
+                renameItem(renameDir, dirName, newName);
+                break;
+
             default:
                 printf("Invalid choice. Try again.\n");
         }

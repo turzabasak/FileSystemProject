@@ -133,3 +133,43 @@ void deleteFile(DirNode* current, const char* fileName) {
     printf("File deleted.\n");
 }
 
+void deleteDir(DirNode* parent, const char* dirName) {
+    DirNode *dir = parent->childDirs, *prev = NULL;
+
+    while (dir && strcmp(dir->dirName, dirName)) {
+        prev = dir;
+        dir = dir->nextDir;
+    }
+    if (!dir) { printf("Dir not found.\n"); return; }
+
+    if (!prev) parent->childDirs = dir->nextDir;
+    else prev->nextDir = dir->nextDir;
+
+    freeMemory(dir);
+    printf("Dir deleted.\n");
+}
+
+void renameItem(DirNode* current, const char* oldName, const char* newName) {
+    DirNode* dir = current->childDirs;
+    while (dir) {
+        if (!strcmp(dir->dirName, oldName)) {
+            strcpy(dir->dirName, newName);
+            printf("Dir renamed.\n");
+            return;
+        }
+        dir = dir->nextDir;
+    }
+
+    FileNode* file = current->fileList;
+    while (file) {
+        if (!strcmp(file->fileName, oldName)) {
+            strcpy(file->fileName, newName);
+            printf("File renamed.\n");
+            return;
+        }
+        file = file->nextFile;
+    }
+
+    printf("Item not found.\n");
+}
+

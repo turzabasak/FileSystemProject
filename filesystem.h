@@ -24,5 +24,7 @@ void search(DirNode* current, const char* searchName, char path[]);
 void freeMemory(DirNode* current);
 DirNode* findDir(DirNode* current, const char* name);
 void deleteFile(DirNode* current, const char* fileName);
+void deleteDir(DirNode* parent, const char* dirName);
+void renameItem(DirNode* current, const char* oldName, const char* newName);
 
 #endif
