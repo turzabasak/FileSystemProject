@@ -3,6 +3,7 @@
 #include <string.h>
 #include "filesystem.h"
 
+// Created by Turza Basak (3746400)
 DirNode* createDir(DirNode* parent, const char* name) {
     DirNode* newDir = (DirNode*)malloc(sizeof(DirNode));
     strcpy(newDir->dirName, name);
@@ -25,6 +26,7 @@ DirNode* createDir(DirNode* parent, const char* name) {
     return newDir;
 }
 
+// Created by Shahdous Prohor (3746335)
 void createFile(DirNode* parent, const char* fileName) {
     FileNode* newFile = (FileNode*)malloc(sizeof(FileNode));
     strcpy(newFile->fileName, fileName);
@@ -40,6 +42,7 @@ void createFile(DirNode* parent, const char* fileName) {
     }
 }
 
+// Created by Shahdous Prohor (3746335)
 void listAll(DirNode* current, int level) {
     if (!current) return;
 
@@ -60,6 +63,7 @@ void listAll(DirNode* current, int level) {
     }
 }
 
+// Created by Shahdous Prohor (3746335)
 void search(DirNode* current, const char* searchName, char path[]) {
     if (!current) return;
 
@@ -83,6 +87,7 @@ void search(DirNode* current, const char* searchName, char path[]) {
     }
 }
 
+// Created by Agnila Hasnat Atma (3745926)
 void freeMemory(DirNode* current) {
     if (!current) return;
 
@@ -103,6 +108,7 @@ void freeMemory(DirNode* current) {
     free(current);
 }
 
+// Created by Agnila Hasnat Atma (3745926)
 DirNode* findDir(DirNode* current, const char* name) {
     if (!current) return NULL;
     if (strcmp(current->dirName, name) == 0) return current;
@@ -116,6 +122,7 @@ DirNode* findDir(DirNode* current, const char* name) {
     return NULL;
 }
 
+// Created by Agnila Hasnat Atma (3745926)
 void deleteFile(DirNode* current, const char* fileName) {
     FileNode *file = current->fileList, *prev = NULL;
 
@@ -132,6 +139,7 @@ void deleteFile(DirNode* current, const char* fileName) {
     printf("File deleted.\n");
 }
 
+// Created by Turza Basak (3746400)
 void deleteDir(DirNode* parent, const char* dirName) {
     DirNode *dir = parent->childDirs, *prev = NULL;
 
@@ -148,6 +156,7 @@ void deleteDir(DirNode* parent, const char* dirName) {
     printf("Dir deleted.\n");
 }
 
+// Created by Turza Basak (3746400)
 void renameItem(DirNode* current, const char* oldName, const char* newName) {
     DirNode* dir = current->childDirs;
     while (dir) {
@@ -172,6 +181,7 @@ void renameItem(DirNode* current, const char* oldName, const char* newName) {
     printf("Item not found.\n");
 }
 
+// Created by Md Ataullah Bahari (3746539)
 void moveFile(DirNode* source, const char* fileName, DirNode* destination) {
     FileNode *file = source->fileList, *prev = NULL;
 

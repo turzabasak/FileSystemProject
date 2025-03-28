@@ -1,0 +1,42 @@
+File System Hierarchy Manager – Group Collaboration Report
+
+Course: CS2263 Winter 2025  
+Group: 2025/WI_CS_2263_FR01B - 28  
+Assignment: Assignment 3 – File System Hierarchy Manager (Structures & Recursion)
+
+Group Members:
+- Agnila Hasnat Atma (3745926)
+- Turza Basak (3746400)
+- Md Ataullah Bahari (3746539)
+- Shahdous Zaman Khan Prohor (3746335)
+
+Project Summary:
+We built a file system simulator in C that allows the creation, traversal, search, and manipulation of files and directories using recursive functions and dynamic memory management. The system mimics a basic file hierarchy and is navigated via a menu-based interface.
+
+Contributions:
+
+- **Agnila Hasnat Atma (3745926):**  
+  Implemented memory management functions including `freeMemory`, `findDir`, and `deleteFile`. These ensure the integrity and proper cleanup of the dynamically allocated structure.
+
+- **Turza Basak (3746400):**  
+  Developed core directory management features such as `createDir`, `deleteDir`, and `renameItem`, handling dynamic tree-like struct operations.
+
+- **Md Ataullah Bahari (3746539):**  
+  Implemented the `moveFile` function, ensuring safe re-linking of file nodes across directories.
+
+- **Shahdous Zaman Khan Prohor (3746335):**  
+  Handled user-visible features like `createFile`, `listAll`, and `search`, implementing key recursive traversals and formatted output.
+
+Collaboration & Workflow:
+We began by discussing the system design and outlining all required structures and functions. We agreed on using a tree-like structure with separate structs for files and directories. Tasks were assigned based on strengths and preferences, and we worked collaboratively via group calls and cloud storage.
+
+We tested and reviewed each other’s code to ensure compatibility and stability before final integration. All team members have a complete understanding of the overall codebase.
+
+Version Control:
+As confirmed by the TA, GitHub was optional and not required for submission. We coordinated using offline collaboration tools and direct meetings.
+
+Testing:
+Manual testing was conducted via the interactive menu. All functions were tested including edge cases like renaming non-existent files, moving files, or deleting nested directories.
+
+Final Notes:
+The submitted code is well-commented with authorship attributions and meets all functional and technical requirements of the assignment.
